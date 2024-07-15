@@ -11,18 +11,10 @@ import RandomRecipe from '../screens/RandomRecipeScreen';
 const Stack = createNativeStackNavigator();
 
 
-function TabNavigator(){
-  return(
-  <Tab.Navigator>
-    <Tab.Screen name='Home' component={AppNavigation}></Tab.Screen>
-    <Tab.Screen name='MyBar' component={MyBarScreen}></Tab.Screen>
-  </Tab.Navigator>
-  )
-}
 
 
 
-
+// mecanismo de navegacao entre as telas
 function AppNavigation() {
   return (
     <NavigationContainer>

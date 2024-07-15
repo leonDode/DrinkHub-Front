@@ -29,11 +29,15 @@ export default function HomeScreen() {
   }, []);
 
   const handleChangeCategory = (category) => {
-    getRecipes(category);
-    setActiveCategory(category);
+    if (category === activeCategory) {
+      setActiveCategory(null);
+      getRecipes();
+    } else {
+      setActiveCategory(category);
+      getRecipes(category);
+    }
     setDrinks([]);
   };
-
 
   // listagem de categorias
   const getCategories = async () => {

@@ -21,6 +21,7 @@ export default function RandomRecipe(props) {
     setLoading(false);
   }, []);
 
+  // atualize o status 
   const updateFavouriteStatus = async (id, newStatus) => {
     try {
       const response = await axios.put(`${URL}/drinks/${id}`, {
