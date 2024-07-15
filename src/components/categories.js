@@ -7,6 +7,7 @@ import { CachedImage } from '../helpers/image';
 
 export default function Categories({categories, activeCategory, handleChangeCategory}) {
   return (
+    // gera o icone clicavel para cada tag de drinks
     <Animated.View entering={FadeInDown.duration(500).springify()}>
       <ScrollView
         horizontal

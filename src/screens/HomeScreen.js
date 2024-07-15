@@ -34,6 +34,8 @@ export default function HomeScreen() {
     setDrinks([]);
   };
 
+
+  // listagem de categorias
   const getCategories = async () => {
     try {
       const response = await axios.get(URL + '/categorias');
@@ -45,17 +47,30 @@ export default function HomeScreen() {
     }
   };
 
+
+  // listagem de drinks
   const getRecipes = async (category) => {
     try {
       let response;
-      if (!activeCategory) {
-        response = await axios.get(URL);
-      } else {
-        response = await axios.get(URL + `/tags/${category}`);
+      if(isChecked){
+
+        if(category){
+          response = await axios.get(`${URL}/mybar/${category}`)
+        }else{
+          response = await axios.get(`${URL}/mybar`)
+        }
+      } else{
+           if (category) {
+              response = await axios.get(`${URL}/tags/${category}`);
+           } else {
+             response = await axios.get(URL);
+           }
       }
+
       if (response && response.data) {
         setDrinks(response.data);
       }
+    
     } catch (err) {
       console.log('error: ', err.message);
     }
@@ -65,11 +80,13 @@ export default function HomeScreen() {
     setActiveIcon(iconName);
   };
 
+
   const handleSearch = (text) => {
     setSearchQuery(text);
     filterRecipes(text);
   };
 
+// filtro da barra de pesquisa
   const filterRecipes = (text) => {
     if (text === '') {
       getRecipes(activeCategory);
@@ -80,7 +97,7 @@ export default function HomeScreen() {
       setDrinks(filteredDrinks);
     }
   };
-
+// gerador de drink aleatorio
   const handleRandomRecipe = () => {
     if (drinks.length > 0) {
       let randomDrink = null;
@@ -91,12 +108,15 @@ export default function HomeScreen() {
     }
   };
 
+  // modal de configuracoes
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
+    getRecipes()
   };
-
+// check box Mybar
   const handleCheckBoxChange = () => {
     setIsChecked(!isChecked);
+   
   };
 
   return (
@@ -131,10 +151,10 @@ export default function HomeScreen() {
               paddingHorizontal: 10,
               paddingVertical: 5,
               borderRadius: 20,
-              backgroundColor: '#f0f0f0',
+              backgroundColor: 'white',
             }}
           >
-            <Text style={{ fontSize: hp(2), color: 'green' }}>Aleatório</Text>
+            <Text style={{ fontSize: hp(2), color: 'green'}}>Aleatório</Text>
             <SparklesIcon size={hp(3)} color="green" />
           </TouchableOpacity>
         </View>
@@ -168,6 +188,7 @@ export default function HomeScreen() {
           <Recipes drinks={drinks} categories={categories} />
         </View>
       </ScrollView>
+      {/* footer menu */}
       <View className="flex-row justify-around items-center p-4 bg-white border-t border-gray-200">
         <TouchableOpacity onPress={() => handleIconPress('Home')}>
           {activeIcon === 'Home' ? (
@@ -216,7 +237,7 @@ export default function HomeScreen() {
     </View>
   );
 }
-
+// estilizacao da genela modal de configuroes
 const styles = StyleSheet.create({
   modalContainer: {
     flex: 1,

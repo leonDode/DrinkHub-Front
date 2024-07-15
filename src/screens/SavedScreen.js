@@ -7,7 +7,6 @@ import { StatusBar } from 'expo-status-bar'
 import {  BookmarkIcon as SolidBook } from 'react-native-heroicons/solid';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { Cog8ToothIcon, MagnifyingGlassIcon} from 'react-native-heroicons/outline'
-import Categories from '../components/categories';
 import axios from 'axios';
 import Saved from '../components/saved';
 import { URL } from '../helpers/url';
