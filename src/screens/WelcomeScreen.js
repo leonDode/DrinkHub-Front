@@ -24,7 +24,7 @@ export default function WelcomeScreen() {
     <View className="flex-1 justify-center items-center space-y-10 bg-green-600">
       <StatusBar style="light" />
 
-      {/* logo image with rings */}
+     
       <Animated.View className="bg-white/20 rounded-full" style={{padding: ring2padding}}>
         <Animated.View className="bg-white/20 rounded-full">
             <Image source={require('../../assets/images/drinkhub.png')}
@@ -32,7 +32,7 @@ export default function WelcomeScreen() {
         </Animated.View>
       </Animated.View>
 
-      {/* title and punchline */}
+      
       <View className="flex items-center space-y-2">
         <Text style={{fontSize: hp(7)}} className="font-bold text-white tracking-widest">
             DrinkHub

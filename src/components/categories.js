@@ -37,7 +37,7 @@ export default function Categories({categories, activeCategory, handleChangeCate
                                 className="rounded-full"
                             />
                         </View>
-                        <Text className="text-neutral-600" style={{fontSize: hp(1.6)}}>
+                        <Text className="text-black-800 " style={{fontSize: hp(1.6)}}>
                             {cat.nome}
                         </Text>
                     </TouchableOpacity>
