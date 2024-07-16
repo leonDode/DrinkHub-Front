@@ -42,7 +42,7 @@ export default function HomeScreen() {
   // listagem de categorias
   const getCategories = async () => {
     try {
-      const response = await axios.get(URL + '/categorias');
+      const response = await axios.get(`${URL}/categorias`);
       if (response && response.data) {
         setCategories(response.data);
       }
